@@ -1,0 +1,19 @@
+<view class=" cml-base cml-view cml-0b96a20d"><cml-buildin-page title="chameleon" class=" cml-base cml-page cml-0b96a20d">
+      <view class="scroller-wrap  cml-base cml-view cml-0b96a20d">
+        <view class=" cml-base cml-view cml-0b96a20d"><masonry-layout init-data="{{cardList}}" class=" cml-base cml-masonry-layout cml-0b96a20d">
+          <view a:for="{{cardList}}" slot="masonry-item-{{index}}" class=" cml-base cml-view cml-0b96a20d">
+            <view style="height:{{item.height}}rpx;width:{{item.width}}rpx;background:{{item.b}};" class=" cml-base cml-view cml-0b96a20d"></view>
+          </view>
+          <view slot="loading" class=" cml-base cml-view cml-0b96a20d">
+            <view class="loding-box  cml-base cml-view cml-0b96a20d">
+              <view class="mult2rect mult2rect1  cml-base cml-view cml-0b96a20d"></view>
+              <view class="mult2rect mult2rect2  cml-base cml-view cml-0b96a20d"></view>
+              <view class="mult2rect mult2rect3  cml-base cml-view cml-0b96a20d"></view>
+              <view class="mult2rect mult2rect4  cml-base cml-view cml-0b96a20d"></view>
+              <view class="mult2rect mult2rect5  cml-base cml-view cml-0b96a20d"></view>
+            </view>
+          </view>
+        </masonry-layout></view>
+        
+      </view>
+  </cml-buildin-page></view>

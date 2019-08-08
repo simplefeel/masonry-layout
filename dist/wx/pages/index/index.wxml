@@ -1,0 +1,19 @@
+<cml-buildin-page title="chameleon" class=" cml-base cml-page">
+      <view class="scroller-wrap  cml-base cml-view">
+        <masonry-layout init-data="{{cardList}}" class=" cml-view cml-masonry-layout">
+          <view wx:for="{{cardList}}" slot="masonry-item-{{index}}" class=" cml-base cml-view">
+            <view style="height:{{item.height}}rpx;width:{{item.width}}rpx;background:{{item.b}};" class=" cml-base cml-view"></view>
+          </view>
+          <view slot="loading" class=" cml-base cml-view">
+            <view class="loding-box  cml-base cml-view">
+              <view class="mult2rect mult2rect1  cml-base cml-view"></view>
+              <view class="mult2rect mult2rect2  cml-base cml-view"></view>
+              <view class="mult2rect mult2rect3  cml-base cml-view"></view>
+              <view class="mult2rect mult2rect4  cml-base cml-view"></view>
+              <view class="mult2rect mult2rect5  cml-base cml-view"></view>
+            </view>
+          </view>
+        </masonry-layout>
+        
+      </view>
+</cml-buildin-page>

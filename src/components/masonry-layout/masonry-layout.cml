@@ -1,0 +1,159 @@
+/*
+ * Filename: /Users/zhangshangjin/Desktop/my-github/masonry-layout/src/components/masonry-layout/masonry-layout.cml
+ * Path: /Users/zhangshangjin/Desktop/my-github/masonry-layout
+ * Created Date: Monday, August 5th 2019, 5:11:18 pm
+ * Author: zhangshangjin
+ * 
+ * Copyright (c) 2019 Your Company
+ */
+
+<template>
+  <view class="masonry-box" style="width:{{masonryBoxWidth}}cpx;right:{{rightDistance}}px">
+    <view class="masonry-item" c-for="{{masonryList}}" c-key="{{item.uuid}}" style="height:{{ item.h }}cpx;width:{{item.w}}cpx;top: {{item.top}}cpx;left: {{ item.left }}cpx" ref="masonry-item-{{index}}">
+      <slot name="masonry-item-{{index}}"></slot>
+    </view>
+    <view class="loading-box" style="top:{{loadingPos}}cpx" c-if="{{loading}}"><slot name="loading"></slot></view>
+    <view class="white-space" style="top:{{whiteSpace}}cpx" c-if="{{loading}}"></view>
+  </view>
+
+</template>
+
+<script>
+import cml from 'chameleon-api'
+
+class MasonryLayout {
+
+  data = {
+    masonryBoxWidth:0, // 视图宽度
+    masonryList:[],// 当前的总数据
+    rightDistance:1000, // 初始位置
+    loadingPos:0,
+    whiteSpace:0
+  }
+
+  props = {
+    initData:{
+      type:Array,
+      default:[]
+    },
+    gap:{
+      type:Number,
+      default:15
+    },
+    loading:{
+      type:Boolean,
+      default:false
+    }
+  }
+
+  watch  = {
+    masonryList:function(){
+      setTimeout(() => {
+        this.paintCard()
+      }, 500);
+
+    },
+    initData:function(newV,oldV){
+      this.masonryList = [...oldV].concat([...newV].slice([...oldV].length))
+    }
+  }
+
+
+  methods = {
+    paintCard(){
+      const {masonryList , gap} = this;
+      const that = this;
+      cml.getSystemInfo().then(info=>{
+        let viewportWidth = parseFloat(info.viewportWidth);
+        let _masonryList = masonryList , _gap = gap , _this = that;
+        cml.getRect('masonry-item-0', this).then(res => {
+          let itemWidth = parseFloat(res.width)
+          // 计算显示的列数，视图宽度 / 卡片宽度 = 列数
+          let columnCount = Math.floor(viewportWidth / itemWidth )
+          // 计算包裹卡片容器的宽度
+          let masonryBoxWidth = columnCount * itemWidth + _gap * (columnCount - 1)
+          // 当前高度集合
+          let curHeight = []
+          // 布局元素
+          _masonryList.length > 0 && _masonryList.forEach((card,index)=>{
+            cml.getRect(`masonry-item-${index}`, this).then(res=>{
+              // 1.先布局第一行元素
+              if(index < columnCount){
+                card.top = 0;
+                card.left = (res.width + _gap) * index
+                card.w = res.width
+                card.h = res.height
+                curHeight.push(card.h)
+                return
+              }
+              // 2.布局剩下的行,在接下来的每一行，从高度最小的地方开始摆放卡片
+              let lastMinHeight = curHeight[0] , lastMinCardIndex = 0 // 上一行的最小高度 和 对应顺序
+              curHeight.forEach((ele,n)=>{
+                if(lastMinHeight > ele){
+                  lastMinHeight = ele
+                  lastMinCardIndex = n
+                }
+              })
+              // 3.布局 > columnCount 的行
+              card.top = lastMinHeight + _gap;
+              card.left = _masonryList[lastMinCardIndex].left;
+              card.w = res.width
+              card.h = res.height
+
+              
+
+              // 4.重新设置最小高度
+              curHeight[lastMinCardIndex] = curHeight[lastMinCardIndex] + res.height + gap
+
+              // 5.渲染容器和元素
+              _this.masonryBoxWidth = masonryBoxWidth
+              _this.rightDistance = 0
+
+              // 6.loading位置
+              _this.loadingPos = card.top + card.h + 50
+              
+              // 7.底部留白
+              _this.whiteSpace = card.top + card.h + 70
+            })
+          })
+        })
+      })
+    }
+    
+  }
+
+  mounted() {
+    this.masonryList = this.initData
+  }
+
+}
+
+export default new MasonryLayout();
+</script>
+<style>
+.masonry-box{
+  position: relative;
+  margin: 0 auto;
+}
+.masonry-item{
+  display: block;
+  position: absolute;
+}
+/* .loading-box{
+  position: absolute;
+  left:50%;
+  transform: translateX(-50%);
+} */
+.white-space{
+  position: absolute;
+  width: 1cpx;
+  height: 30cpx;
+}
+</style>
+<script cml-type="json">
+{
+  "base": {
+    "usingComponents": {}
+  }
+}
+</script>

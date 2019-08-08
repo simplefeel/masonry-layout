@@ -1,0 +1,10 @@
+{
+    "usingComponents": {
+        "masonry-layout": "./../../components/masonry-layout/masonry-layout",
+        "cml-buildin-page": "./../../npm/chameleon-ui-builtin/components/page/page"
+    },
+    "defaultTitle": "index",
+    "pullRefresh": false,
+    "allowsBounceVertical": "YES",
+    "titleBarColor": "#ffffff"
+}

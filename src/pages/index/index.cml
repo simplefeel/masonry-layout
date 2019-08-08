@@ -1,0 +1,290 @@
+<template>
+  <page title="chameleon">
+        <view class="scroller-wrap">
+          <masonry-layout init-data="{{cardList}}">
+            <view c-for="{{cardList}}" slot="masonry-item-{{index}}">
+              <view style="height:{{ item.height }}cpx;width:{{item.width}}cpx;background:{{ item.b }};"></view>
+            </view>
+            <view slot="loading">
+              <view class="loding-box">
+                <view class="mult2rect mult2rect1"></view>
+                <view class="mult2rect mult2rect2"></view>
+                <view class="mult2rect mult2rect3"></view>
+                <view class="mult2rect mult2rect4"></view>
+                <view class="mult2rect mult2rect5"></view>
+              </view>
+            </view>
+          </masonry-layout>
+          
+        </view>
+  </page>
+</template>
+
+<script>
+
+class Index  {
+  data = {
+    title: "chameleon",
+    chameleonSrc: require('../../assets/images/chameleon.png'),
+    cardList:[],
+    parent:'hello'
+  }
+
+  methods={
+    random:function(){
+      let array = [],
+      num = 10;
+      const colorList = [
+        "#1abc9c",
+        "#2ecc71",
+        "#3498db",
+        "#8e44ad",
+        "#e67e22",
+        "#2c3e50"
+      ];
+      for (let i = 0; i < num; i++) {
+        array.push({
+          width: 340,
+          height: Math.floor(Math.random() * 400 + 100),
+          b: colorList[Math.floor(Math.random() * 5)],
+          left:0,
+          top:0,
+          text:i+1,
+          uuid:Math.random()
+        });
+      }
+      return array
+    },
+    random2:function(){
+      let array = [],
+      num = 10;
+      const colorList = [
+        "#1abc9c",
+        "#2ecc71",
+        "#3498db",
+        "#8e44ad",
+        "#e67e22",
+        "#2c3e50"
+      ];
+      for (let i = 0; i < num; i++) {
+        array.push({
+          width: 340,
+          height: Math.floor(Math.random() * 400 + 100),
+          b: colorList[Math.floor(Math.random() * 5)],
+          left:0,
+          top:0,
+          text:i+10,
+          uuid:Math.random()
+        });
+      }
+      return array
+    },
+    onReachBottom(){
+      this.cardList = [...this.cardList].concat(this.random2())
+    }
+  }
+
+  created(){
+    this.cardList = this.random()
+  }
+
+}
+
+export default new Index();
+
+</script>
+<style>
+
+.scroller-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-item{
+  width:340cpx;
+  border:1px solid #8e44ad;
+}
+.loding-box{
+  display:flex;
+  justify-content:center;
+  align-items:center
+}
+
+.mult2rect {
+      height: 30cpx;
+      width: 7cpx;
+      margin: 0 2cpx;
+   }
+   
+   .mult2rect1 {
+      background-color: #F5D76E;
+      -webkit-animation: mult2rect1 3s infinite linear;
+      animation: mult2rect1 3s infinite linear;
+   }
+   
+   @-webkit-keyframes mult2rect1 {
+      0%, 10%, 70%, 80%, 100% {
+         -webkit-transform: scaleY(1);
+         transform: scaleY(1);
+      }
+      5%, 75% {
+         -webkit-transform: scaleY(2);
+         transform: scaleY(2);
+      }
+   }
+   
+   @keyframes mult2rect1 {
+      0%, 10%, 70%, 80%, 100% {
+         -webkit-transform: scaleY(1);
+         transform: scaleY(1);
+      }
+      5%, 75% {
+         -webkit-transform: scaleY(2);
+         transform: scaleY(2);
+      }
+   }
+   
+   .mult2rect2 {
+      background-color: #F4D03F;
+      -webkit-animation: mult2rect2 3s infinite linear;
+      animation: mult2rect2 3s infinite linear;
+   }
+   
+   @-webkit-keyframes mult2rect2 {
+      0%, 5%, 15%,  65%, 75%, 100% {
+         -webkit-transform: scaleY(1);
+         transform: scaleY(1);
+      }
+      10%, 70% {
+         -webkit-transform: scaleY(2);
+         transform: scaleY(2);
+      }
+   }
+   
+   @keyframes mult2rect2 {
+      0%, 5%, 15%,  65%, 75%, 100% {
+         -webkit-transform: scaleY(1);
+         transform: scaleY(1);
+      }
+      10%, 70% {
+         -webkit-transform: scaleY(2);
+         transform: scaleY(2);
+      }
+   }
+   
+   .mult2rect3 {
+      background-color: #EB9532;
+      -webkit-animation: mult2rect3 3s infinite linear;
+      animation: mult2rect3 3s infinite linear;
+   }
+   
+   @-webkit-keyframes mult2rect3 {
+      0%, 10%, 20%, 60%, 70%, 100% {
+         -webkit-transform: scaleY(1);
+         transform: scaleY(1);
+      }
+      15%, 65% {
+         -webkit-transform: scaleY(2);
+         transform: scaleY(2);
+      }
+   }
+   
+   @keyframes mult2rect3 {
+      0%, 10%, 20%, 60%, 70%, 100% {
+         -webkit-transform: scaleY(1);
+         transform: scaleY(1);
+      }
+      15%, 65% {
+         -webkit-transform: scaleY(2);
+         transform: scaleY(2);
+      }
+   }
+   
+   .mult2rect4 {
+      background-color: #EC644B;
+      -webkit-animation: mult2rect4 3s infinite linear;
+      animation: mult2rect4 3s infinite linear;
+   }
+   
+   @-webkit-keyframes mult2rect4 {
+      0%, 15%, 25%, 55%, 65%, 100% {
+         -webkit-transform: scaleY(1);
+         transform: scaleY(1);
+      }
+      20%, 60% {
+         -webkit-transform: scaleY(2);
+         transform: scaleY(2);
+      }
+   }
+   
+   @keyframes mult2rect4 {
+      0%, 15%, 25%, 55%, 65%, 100% {
+         -webkit-transform: scaleY(1);
+         transform: scaleY(1);
+      }
+      20%, 60% {
+         -webkit-transform: scaleY(2);
+         transform: scaleY(2);
+      }
+   }
+   
+   .mult2rect5 {
+      background-color: #C0392B;
+      -webkit-animation: mult2rect5 3s infinite linear;
+      animation: mult2rect5 3s infinite linear;
+   }
+   
+   @-webkit-keyframes mult2rect5 {
+      0%, 20%, 30%, 50%, 60%, 100% {
+         -webkit-transform: scaleY(1);
+         transform: scaleY(1);
+      }
+      25%, 55% {
+         -webkit-transform: scaleY(2);
+         transform: scaleY(2);
+      }
+   }
+   
+   @keyframes mult2rect5 {
+      0%, 20%, 30%, 50%, 60%, 100% {
+         -webkit-transform: scaleY(1);
+         transform: scaleY(1);
+      }
+      25%, 55% {
+         -webkit-transform: scaleY(2);
+         transform: scaleY(2);
+      }
+   }
+
+
+</style>
+<script cml-type="json">
+{
+  "base": {
+    "usingComponents": {
+      "masonry-layout": "/components/masonry-layout/masonry-layout"
+    }
+  },
+  "wx": {
+    "navigationBarTitleText": "index",
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#E2E2E2"
+  },
+  "alipay": {
+    "defaultTitle": "index",
+    "pullRefresh": false,
+    "allowsBounceVertical": "YES",
+    "titleBarColor": "#ffffff"
+  },
+  "baidu": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "index",
+    "backgroundColor": "#ffffff",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": false,
+    "onReachBottomDistance": 50
+  }
+}
+</script>

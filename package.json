@@ -1,0 +1,17 @@
+{
+  "name": "masonry-layout",
+  "version": "1.0.0",
+  "description": "瀑布流布局组件，跨多端，支持微信小程序、百度小程序、头条小程序、web等",
+  "author": "skinner",
+  "private": true,
+  "scripts": {},
+  "license": "MIT",
+  "dependencies": {
+    "chameleon-api": "0.4.3",
+    "chameleon-bridge": "0.1.2",
+    "chameleon-runtime": "0.1.4",
+    "chameleon-store": "0.0.3",
+    "chameleon-ui-builtin": "^0.2.0",
+    "cml-ui": "0.1.7"
+  }
+}
