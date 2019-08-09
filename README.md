@@ -44,8 +44,8 @@
 
 👤 **skinner**
 
-* Twitter: [@skinner](https://twitter.com/skinner)
-* Github: [@skinner](https://github.com/skinner)
+* Twitter: [@skinner](https://twitter.com/BeforBenben)
+* Github: [@skinner](https://github.com/simplefeel)
 
 ## Show your support
 
