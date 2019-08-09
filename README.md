@@ -8,6 +8,15 @@
 
 > 瀑布流布局组件，跨多端，支持微信小程序、百度小程序、头条小程序、web等
 
+## Demo
+
+```sh
+npm i -g chameleon-tool
+```
+```
+cml dev
+```
+
 ## Install
 
 1. clone或者下载项目到本地
