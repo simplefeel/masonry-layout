@@ -11,10 +11,9 @@
 ## Demo
 
 ```sh
-npm i -g chameleon-tool
-```
-```
-cml dev
+1. git clone
+2. npm i -g chameleon-tool
+3. cml dev
 ```
 
 ## Install
