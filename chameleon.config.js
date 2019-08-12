@@ -19,6 +19,15 @@ cml.config.merge({
       entry: ["src/components"]
     }
   },
+  alipay: {
+    dev: {},
+    build: {
+      apiPrefix
+    },
+    export: {
+      entry: ["src/components"]
+    }
+  },
   web: {
     dev: {
       analysis: false,

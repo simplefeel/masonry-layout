@@ -1,0 +1,5 @@
+<view class="masonry-box  cml-base cml-view cml-13ac27bb" style="width:{{masonryBoxWidth}}rpx;right:{{rightDistance}}px">
+  <view class="masonry-item  cml-base cml-view cml-13ac27bb  _cml_ref_lmc_" a:for="{{masonryList}}" a:key="{{item.uuid}}" style="height:{{item.h}}rpx;width:{{item.w}}rpx;top: {{item.top}}rpx;left: {{item.left}}rpx" id="masonry-item-{{index}}">
+    <slot name="masonry-item-{{index}}" class=" cml-base cml-slot cml-13ac27bb"></slot>
+  </view>
+</view>
