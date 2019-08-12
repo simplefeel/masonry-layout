@@ -1,0 +1,5 @@
+<view class="masonry-box  cml-base cml-view" style="width:{{masonryBoxWidth}}rpx;right:{{rightDistance}}px">
+  <view class="masonry-item  cml-base cml-view  _cml_ref_lmc_" wx:for="{{masonryList}}" wx:key="{{item.uuid}}" style="height:{{item.h}}rpx;width:{{item.w}}rpx;top: {{item.top}}rpx;left: {{item.left}}rpx" id="masonry-item-{{index}}">
+    <slot name="masonry-item-{{index}}" class=" cml-base cml-slot"></slot>
+  </view>
+</view>

@@ -1,7 +1,0 @@
-<view class="masonry-box  cml-base cml-view" style="width:{{masonryBoxWidth}}rpx;right:{{rightDistance}}px">
-  <view class="masonry-item  cml-base cml-view  _cml_ref_lmc_" s-for="masonryList" s-key="item.uuid" style="height:{{item.h}}rpx;width:{{item.w}}rpx;top: {{item.top}}rpx;left: {{item.left}}rpx" id="masonry-item-{{index}}">
-    <slot name="masonry-item-{{index}}" class=" cml-base cml-slot"></slot>
-  </view>
-  <view class="loading-box  cml-base cml-view" style="top:{{loadingPos}}rpx" s-if="loading"><slot name="loading" class=" cml-base cml-slot"></slot></view>
-  <view class="white-space  cml-base cml-view" style="top:{{whiteSpace}}rpx" s-if="loading"></view>
-</view>

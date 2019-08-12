@@ -1,18 +1,10 @@
 <template>
   <page title="chameleon">
         <view class="scroller-wrap">
+          <view class="w-top"></view>
           <masonry-layout init-data="{{cardList}}">
             <view c-for="{{cardList}}" slot="masonry-item-{{index}}">
               <view style="height:{{ item.height }}cpx;width:{{item.width}}cpx;background:{{ item.b }};"></view>
-            </view>
-            <view slot="loading">
-              <view class="loding-box">
-                <view class="mult2rect mult2rect1"></view>
-                <view class="mult2rect mult2rect2"></view>
-                <view class="mult2rect mult2rect3"></view>
-                <view class="mult2rect mult2rect4"></view>
-                <view class="mult2rect mult2rect5"></view>
-              </view>
             </view>
           </masonry-layout>
           
@@ -99,6 +91,12 @@ export default new Index();
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.w-top{
+  width:100%;
+  height:300cpx;
+  background:#ddd
 }
 
 .card-item{

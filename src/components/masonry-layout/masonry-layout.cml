@@ -12,8 +12,6 @@
     <view class="masonry-item" c-for="{{masonryList}}" c-key="{{item.uuid}}" style="height:{{ item.h }}cpx;width:{{item.w}}cpx;top: {{item.top}}cpx;left: {{ item.left }}cpx" ref="masonry-item-{{index}}">
       <slot name="masonry-item-{{index}}"></slot>
     </view>
-    <view class="loading-box" style="top:{{loadingPos}}cpx" c-if="{{loading}}"><slot name="loading"></slot></view>
-    <view class="white-space" style="top:{{whiteSpace}}cpx" c-if="{{loading}}"></view>
   </view>
 
 </template>
@@ -39,10 +37,6 @@ class MasonryLayout {
     gap:{
       type:Number,
       default:15
-    },
-    loading:{
-      type:Boolean,
-      default:false
     }
   }
 
@@ -51,7 +45,6 @@ class MasonryLayout {
       setTimeout(() => {
         this.paintCard()
       }, 500);
-
     },
     initData:function(newV,oldV){
       this.masonryList = [...oldV].concat([...newV].slice([...oldV].length))
